@@ -1,5 +1,5 @@
 import pandas as pd
-from pathlib import path
+from pathlib import Path
 
 INPUT_FILE = Path("../Data/2026-09-04.csv")
 OUTPUT_FILE = Path("../Data/foods.csv")
