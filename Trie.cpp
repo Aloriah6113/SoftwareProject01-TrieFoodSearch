@@ -23,7 +23,7 @@ Trie::~Trie() {
  * 해당 문자의 자식 노드가 존재한다면 해당 노드로 이동하고,
  * 존재하지 않으면 새로운 TrieNode를 생성하여 연결한다.
  */
-TrieNode* Trie::insert(const string& foodName, const string& foodId) {
+void Trie::insert(const string& foodName, const string& foodId) {
     TrieNode* current = root;
     int idx = 0;
     
@@ -41,7 +41,7 @@ TrieNode* Trie::insert(const string& foodName, const string& foodId) {
     current->isEnd = true;
     current->foodId = foodId;
 
-    return root;  // 근데 이거 return 없어도 되는거 아닌가?
+    return;
 }
 
 /*
@@ -67,6 +67,8 @@ string Trie::search(const string& foodName) {
     if (current->isEnd == true) {
         return current->foodId;
     }
+
+    return "";
 }
  
 /*
