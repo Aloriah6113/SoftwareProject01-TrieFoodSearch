@@ -76,3 +76,9 @@ void FoodDataManager::loadCsv(const string& filePath) {
 const Food& FoodDataManager::getFood(const string& foodId) {
     return foods.at(foodId);
 }
+
+const std::unordered_map<std::string, Food>&
+FoodDataManager::getFoods() const
+{
+    return foods;
+}
