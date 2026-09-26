@@ -1,4 +1,4 @@
-#include "SearchService.h"
+﻿#include "SearchService.h"
 
 using std::string;
 using std::vector;
