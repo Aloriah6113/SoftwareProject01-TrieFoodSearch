@@ -1,4 +1,4 @@
-// Trie.h
+﻿// Trie.h
 #pragma once
 
 #include <string>

@@ -11,10 +11,8 @@ using std::unordered_map;
 using std::vector;
 
 void FoodDataManager::loadCsv(const string& filePath) {
-    // CSV 파일 열기
     std::ifstream file(filePath);
 
-    // 파일을 열지 못한 경우
     if (!file.is_open()) {
         std::cerr << "Failed to open file: " << filePath << '\n';
         return;
@@ -22,16 +20,14 @@ void FoodDataManager::loadCsv(const string& filePath) {
 
     string line;
 
-    // 첫 번째 줄은 CSV 헤더이므로 건너뜀
+    // 헤더 건너뛰기
     std::getline(file, line);
 
-    // 파일의 나머지 줄을 하나씩 읽음
     while (std::getline(file, line)) {
-        std::vector<string> fields;
+        vector<string> fields;
         string field;
         bool insideQuotes = false;
 
-        // CSV 한 줄을 필드 단위로 분리
         for (char c : line) {
             if (c == '"') {
                 insideQuotes = !insideQuotes;
@@ -45,27 +41,26 @@ void FoodDataManager::loadCsv(const string& filePath) {
             }
         }
 
-        // 마지막 필드 추가
         fields.push_back(field);
 
-        // 예상한 필드 개수가 아니면 해당 줄을 건너뜀
-        if (fields.size() < 7) {
+        // foodId ~ imageUrl까지 총 9개
+        if (fields.size() < 9) {
             continue;
         }
 
-        // CSV 데이터로 Food 객체 생성
         Food food(
-            fields[0], // foodId
-            fields[1], // foodName
-            fields[2], // category
-            fields[3], // ingredients
-            fields[4], // recipe
-            fields[5], // allergyInfo
-            fields[6]  // imageUrl
+            fields[0],  // foodId
+            fields[1],  // foodName
+            fields[2],  // category
+            fields[3],  // subcategory
+            fields[4],  // weight
+            fields[5],  // recipe
+            fields[6],  // allergyInfo
+            fields[7],  // ingredients
+            fields[8]   // imageUrl
         );
 
-        // foodId를 key로 Food 객체 저장
-        foods[fields[0]] = food;
+        foods.emplace(fields[0], food);
     }
 }
 
