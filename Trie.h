@@ -12,7 +12,7 @@ public:
     
     ~Trie();
 
-    TrieNode* insert(const std::string& foodName, const std::string& foodId);
+    void insert(const std::string& foodName, const std::string& foodId);
 
     std::string search(const std::string& foodName);
 

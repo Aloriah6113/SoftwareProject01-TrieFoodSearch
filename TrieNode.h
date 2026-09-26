@@ -7,6 +7,7 @@
 class TrieNode {
 public:
     TrieNode();
+    ~TrieNode();
 
     friend class Trie;
 
